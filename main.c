@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:49:12 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/24 15:11:03 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/24 17:35:15 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	rev_rotate(push_list **stack)
 	push_list	*last;
 	
 	if (stck_size(*stack) < 2)
-		return ;`
+		return ;
 	first = *stack;
 	last = ft_lstlast_push(*stack);
 	second_to_last = ft_lst_second_to_last_push(*stack);
@@ -168,6 +168,86 @@ void	rev_rotate(push_list **stack)
 	*stack = last;
 	second_to_last->next = NULL;
 	printf("reverse rotated\n");
+}
+
+int	get_max(push_list *stack)
+{
+	int	max;
+
+	if (!stack)
+		return (0);
+	max = stack->number;
+	while (stack->next)
+	{
+		if (max < stack->number)
+			max = stack->number;
+		stack = stack->next;
+	}
+	if (max < stack->number)
+			max = stack->number;
+	return (max);
+}
+
+int	get_min(push_list *stack)
+{
+	int	min;
+
+	if (!stack)
+		return (0);
+	min = stack->number;
+	while (stack->next)
+	{
+		if (min > stack->number)
+			min = stack->number;
+		stack = stack->next;
+	}
+	if (min > stack->number)
+			min = stack->number;
+	return (min);
+}
+
+void	sort_int_tab(int *tab, int size)
+{
+	int	i = 0;
+	int	temp;
+
+	while (i < (size - 1))
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			temp = tab[i];
+			tab[i] = tab[i+ 1];
+			tab[i + 1] = temp;
+			i = 0;
+		}
+		else
+			i++;
+	}
+}
+
+int	get_median(push_list *stack)
+{
+	int	median;
+	int	size;
+	int	*array;
+	int	i;
+
+	if(!stack)
+		return(0);
+	i = 0;
+	size = stck_size(stack);
+	array = malloc(sizeof(int) * size);
+	while (stack->next)
+	{
+		array[i] = stack->number;
+		i++;
+		stack = stack->next;
+	}	
+	array[i] = stack->number;
+	sort_int_tab(array, size);
+	median = array[size / 2];
+	free(array);
+	return (median);
 }
 
 int main(int argc, char **argv)
@@ -197,12 +277,18 @@ int main(int argc, char **argv)
 	}
 	printf("integer %d:%d \n", i, stack_a->number);
 	stack_a = tmp;
+	printf("max int in stack_a %d\n",get_max(stack_a));
+	printf("min int in stack_a %d\n",get_min(stack_a));
+	printf("median int in stack_a %d\n",get_median(stack_a));
 	swap(&stack_a);
 	push(&stack_a, &stack_b);
-	// push(&stack_a, &stack_b);
-	// rotate(&stack_a);
+	push(&stack_a, &stack_b);
+	rotate(&stack_a);
 	rev_rotate(&stack_a);
-	// rotate(&stack_b);
+	rotate(&stack_b);
+	printf("max int in stack_a %d\n",get_max(stack_a));
+	printf("min int in stack_a %d\n",get_min(stack_a));
+	printf("max int in stack_b %d\n",get_max(stack_b));
 	tmp = stack_a;
 	i = 0;
 	while (stack_a->next)
