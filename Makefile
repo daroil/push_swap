@@ -6,7 +6,7 @@
 #    By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 13:47:58 by dhendzel          #+#    #+#              #
-#    Updated: 2023/01/18 13:57:13 by dhendzel         ###   ########.fr        #
+#    Updated: 2023/01/18 14:01:18 by dhendzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ MAND_OBJS = $(MAND_FIL:.c=.o)
 BONUS_OBJS = $(BONUS_FIL:.c=.o)
 # $(addprefix mand/, $(MAND_SRCS))
 MAND_FIL = $(addsuffix .c, $(MAND_SRCS)) \
-
-BONUS_FIL = $(addsuffix _bonus.c, $(addprefix bonus/, $(MAND_SRCS))) \
+#  $(addprefix bonus/,
+BONUS_FIL = $(addsuffix _bonus.c, $(MAND_SRCS)) \
 
 
 all : libft $(NAME)

@@ -6,7 +6,7 @@
 #    By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/16 15:18:30 by dhendzel          #+#    #+#              #
-#    Updated: 2023/01/11 02:05:50 by dhendzel         ###   ########.fr        #
+#    Updated: 2023/01/23 18:40:45 by dhendzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJ	= $(SRCS:.c=.o)
 BONUS_OBJ = $(BONUS:.c=.o)
 CFLAGS = -Wall -Werror -Wextra -I.
 
-all: $(NAME)
+all: $(NAME) bonus
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ) 
