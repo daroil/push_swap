@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:31:51 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/25 18:31:53 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:48:06 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,6 @@ int	read_instructions(t_list **head_a, t_list **head_b)
 	return (return_value);
 }
 
-int	finish(t_list *head_a, t_list *head_b, char **other_var, int return_value)
-{
-	if (head_a)
-		free_list(head_a);
-	if (head_b)
-		free_list(head_b);
-	if (other_var)
-		free_split(other_var);
-	return (return_value);
-}
-
 int	worker(int argc, char **argv)
 {
 	t_list	*head_a;
@@ -110,4 +99,14 @@ int	worker(int argc, char **argv)
 	else
 		ft_putstr("KO\n");
 	return (finish(head_a, head_b, other_var, 0));
+}
+
+int	main(int argc, char **argv)
+{
+	int	i;
+
+	i = worker(argc, argv);
+	if (i == 2)
+		ft_putstr("Error\n");
+	return (0);
 }

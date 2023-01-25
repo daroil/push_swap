@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:30:57 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/25 18:30:59 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:49:45 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ int		read_instructions(t_list **head_a, t_list **head_b);
 int		exec_instruction(t_list **head_a, t_list **head_b, char *str);
 int		extra_exec_functions(t_list **head_a, t_list **head_b, char *str);
 int		check_repetitions(t_list *head);
+int		finish(t_list *head_a, t_list *head_b, char **other_var, int return_value);
 #endif

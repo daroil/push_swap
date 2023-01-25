@@ -6,7 +6,7 @@
 #    By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 18:52:36 by dhendzel          #+#    #+#              #
-#    Updated: 2023/01/25 19:23:49 by dhendzel         ###   ########.fr        #
+#    Updated: 2023/01/25 19:49:20 by dhendzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ Bonus/itoa.c \
 Bonus/list_fuctions.c \
 Bonus/list_fuctions_2.c \
 Bonus/list_fuctions_3.c \
-Bonus/main.c
+Bonus/main.c \
+Bonus/extra_functions.c
 
 
 OBJ	= $(SRCS:.c=.o)

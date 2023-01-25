@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:31:09 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/25 18:31:11 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:47:24 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,44 +31,4 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	return (res * sign);
-}
-
-int	list_len(t_list *head)
-{
-	t_list	*temp;
-	int		res;
-
-	res = 0;
-	temp = head;
-	while (temp)
-	{
-		temp = temp->next;
-		res++;
-	}
-	return (res);
-}
-
-int	check_if_stack_sorted(t_list *head)
-{
-	long	i;
-
-	i = MIN_INT - 1;
-	while (head)
-	{
-		if (head->value <= i)
-			return (0);
-		i = head->value;
-		head = head->next;
-	}
-	return (1);
-}
-
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	i = worker(argc, argv);
-	if (i == 2)
-		ft_putstr("Error\n");
-	return (0);
 }
