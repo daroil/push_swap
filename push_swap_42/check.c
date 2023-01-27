@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:09:32 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/25 18:26:46 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:44:09 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ char	**copy_argv(char **argv)
 	int		i;
 
 	i = 0;
-	while (argv[i++])
-		;
+	while (argv[i])
+		i++;
 	res = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	while (argv[++i])

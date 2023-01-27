@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:32:00 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/25 19:43:59 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/27 22:36:40 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 void	push_best_b_to_a(t_list **head_a, t_list **head_b, t_list *a, t_list *b)
 {
-	t_list	*temp;
 	int		min_steps;
-	int		cur_pos_b;
 
-	temp = *head_b;
 	min_steps = find_min_steps(b);
-	cur_pos_b = 0;
-	while (temp)
+	while (head_a)
 	{	
+			printf("b->steps %d\n",b->steps);
 		if (b->steps == min_steps)
 		{
 			if (min_steps == max(b->cur_pos_a, b->cur_pos_b) + 1)
@@ -110,6 +107,7 @@ void	sort(t_list **head_a, t_list **head_b)
 	initial_swap(&a);
 	while (b)
 	{
+	printf("value of head b%d\n",b->value);
 		steps(a, b);
 		push_best_b_to_a(&a, &b, a, b);
 	}

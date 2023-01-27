@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:32:09 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/25 19:29:57 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/27 22:44:09 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	set_pos_count_steps(t_list *head_b, t_list *temp,
 	int cur_pos_a, int cur_pos_b)
 {
 	head_b->steps = count_steps(cur_pos_b, cur_pos_a, head_b, temp);
+	printf("steps %d\n",head_b->steps);
 	head_b->cur_pos_a = cur_pos_a;
 	head_b->cur_pos_b = cur_pos_b;
 }

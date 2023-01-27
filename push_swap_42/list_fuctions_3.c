@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:32:41 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/25 18:32:42 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/27 22:07:11 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	find_median(t_list *head)
 	selection_sort(res, i);
 	i = res[i / 2];
 	free(res);
+
+	printf("%d\n", i);
 	return (i);
 }
 
