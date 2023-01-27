@@ -1,30 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 18:09:32 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:07:40 by dhendzel         ###   ########.fr       */
+/*   Created: 2023/01/28 00:43:33 by dhendzel          #+#    #+#             */
+/*   Updated: 2023/01/28 00:56:25 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **splitted)
+int	is_sorted(push_list *stack)
+{
+	long	i;
+
+	i = MIN_INT - 1;
+	while (stack)
+	{
+		if (stack->number <= i)
+			return (0);
+		i = stack->number;
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	inside_array(int *array, int number, int size)
 {
 	int	i;
 
-	i = 0;
-	if (!splitted)
-		return ;
-	while (splitted[i])
+	i = 0;	
+	while (i < size)
 	{
-		free(splitted[i]);
+		if (array[i] == number)
+			return (1);
 		i++;
 	}
-	free(splitted);
+	return (0);
+}
+
+int	repeatitions(push_list	*stack_a)
+{
+	int	*values;
+	int	i;
+	int	size;
+
+	size = 	stck_len(stack_a);
+	values = malloc(sizeof(int) * size);
+	i = 0;
+	while (stack_a)
+	{
+		if (inside_array(values, stack_a->number, size))
+		{
+			free(values);
+			return(1);
+		}
+		values[i++] = stack_a->number;
+		stack_a = stack_a->next;
+	}
+	free(values);
+	return (0);
 }
 
 int	all_digits(char **argv)
@@ -53,51 +90,17 @@ int	all_digits(char **argv)
 	return (1);
 }
 
-char	**copy_argv(char **argv)
-{
-	char	**res;
-	int		i;
-
-	i = 0;
-	while (argv[i])
-		i++;
-	res = malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (argv[++i])
-		res[i - 1] = ft_strdup(argv[i]);
-	return (res);
-}
-
-int	all_ints(char **argv)
+void	free_split(char **splitted)
 {
 	int	i;
 
 	i = 0;
-	while (argv[i])
+	if (!splitted)
+		return ;
+	while (splitted[i])
 	{
-		if (!check_int(argv[i]))
-			return (0);
+		free(splitted[i]);
 		i++;
 	}
-	return (1);
-}
-
-char	**split_if_needed(int argc, char **argv)
-{
-	char	**res;
-
-	printf("argv %s\n", *(argv+1));
-	if (argc == 2 && !all_digits(argv + 1))
-	{
-		printf("here\n");
-		res = ft_split(argv[1], ' ');
-	}
-	else
-		res = copy_argv(argv);
-	if (!all_digits(res) || !all_ints(res))
-	{
-		free_split(res);
-		return (NULL);
-	}
-	return (res);
+	free(splitted);
 }

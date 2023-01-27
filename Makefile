@@ -6,7 +6,7 @@
 #    By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 13:47:58 by dhendzel          #+#    #+#              #
-#    Updated: 2023/01/27 18:19:08 by dhendzel         ###   ########.fr        #
+#    Updated: 2023/01/28 00:55:49 by dhendzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,19 @@ MAND_SRCS = main \
 			ft_strdup \
 			ft_strlen \
 			ft_putstr_fd \
-			operations			
+			push \
+			rev_rotate \
+			rotate \
+			lst_functions \
+			find_min_max \
+			swap \
+			step_count \
+			helpers \
+			checks \
+			initial_sort \
+			extensive_sort \
+			rotate_push \
+			rev_rotate_push
 
 BONUS_SRCS = main \
 			

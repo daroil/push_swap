@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:42:22 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/27 16:24:47 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:56:41 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ char	**ft_split(char const *s, char c)
 	char		**s_array;
 	int			new_word_pos;
 
+	if (!s)
+		return (NULL);
 	new_word_pos = -1;
 	s_array = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
 	if (!s_array)
