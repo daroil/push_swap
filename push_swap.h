@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:20 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 01:09:47 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 04:58:19 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # define MIN_INT -2147483648
 
 # include <stdio.h>
-# include "../libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_push_swap
 {
@@ -95,5 +96,8 @@ void		rrb_ra(t_push_list *b, t_push_list **head_a, t_push_list **head_b);
 int			find_index_of_min(t_push_list *stack);
 void		final_rotate(t_push_list **stack_a);
 void		free_split(char **splitted);
+int			ft_atoi(const char *str);
+void		ft_putstr_fd(char *s, int fd);
+void		ft_putchar_fd(char c, int fd);
 
 #endif

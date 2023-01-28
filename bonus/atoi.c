@@ -6,11 +6,11 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:04:15 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 04:44:26 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 04:44:16 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "bonus.h"
 
 int	ft_isdigit(int c)
 {
