@@ -6,14 +6,14 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:52:28 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:52:50 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:07:36 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	b_is_bigger(push_list *a, push_list *b, push_list **head_a, push_list **head_b)
+void	b_is_bigger(t_push_list *a, t_push_list *b,
+			t_push_list **head_a, t_push_list **head_b)
 {
 	int	iter;
 
@@ -33,7 +33,7 @@ void	b_is_bigger(push_list *a, push_list *b, push_list **head_a, push_list **hea
 	pa(head_a, head_b);
 }
 
-void	a_is_bigger(push_list *b, push_list **head_a, push_list **head_b)
+void	a_is_bigger(t_push_list *b, t_push_list **head_a, t_push_list **head_b)
 {
 	int	iter;
 
@@ -53,7 +53,8 @@ void	a_is_bigger(push_list *b, push_list **head_a, push_list **head_b)
 	pa(head_a, head_b);
 }
 
-void	rev_rotate_then_push(push_list *a, push_list *b, push_list **head_a, push_list **head_b)
+void	rev_rotate_then_push(t_push_list *a, t_push_list *b,
+			t_push_list **head_a, t_push_list **head_b)
 {
 	if (stck_len(a) - b->pos_a
 		< stck_len(*head_b) - b->pos_b)

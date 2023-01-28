@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:49:12 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:57:29 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:11:39 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**get_args(int argc, char **argv)
 	i = 0;
 	if (argc == 2 && !all_digits(argv + 1))
 		result = ft_split(argv[1], ' ');
-	else 
+	else
 	{
 		while (argv[i])
 			i++;
@@ -44,10 +44,10 @@ char	**get_args(int argc, char **argv)
 	return (result);
 }
 
-void	sort(push_list **head_a, push_list **head_b)
+void	sort(t_push_list **head_a, t_push_list **head_b)
 {
-	push_list	*a;
-	push_list	*b;
+	t_push_list	*a;
+	t_push_list	*b;
 
 	a = *head_a;
 	b = *head_b;
@@ -62,7 +62,8 @@ void	sort(push_list **head_a, push_list **head_b)
 	*head_b = b;
 }
 
-int	you_died(push_list **stack_a, push_list **stack_b, char **args, char *exit_message)
+int	you_died(t_push_list **stack_a, t_push_list **stack_b,
+		char **args, char *exit_message)
 {
 	ft_push_clear(stack_a);
 	ft_push_clear(stack_b);
@@ -71,22 +72,22 @@ int	you_died(push_list **stack_a, push_list **stack_b, char **args, char *exit_m
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int	i;
-	push_list	*stack_a;
-	push_list	*stack_b;
+	int			i;
+	t_push_list	*stack_a;
+	t_push_list	*stack_b;
 	char		**arguements;
 
 	if (argc < 2)
 		return (0);
 	arguements = get_args(argc, argv);
 	if (!arguements)
-		return(you_died(NULL,NULL,NULL,"Error2\n"));
+		return (you_died(NULL, NULL, NULL, "Error2\n"));
 	i = 0;
 	ft_lstadd_back_number(&stack_a, ft_atoi(arguements[i++]));
-	if(!stack_a)
-		return (you_died(NULL,NULL,NULL,"Error1\n"));
+	if (!stack_a)
+		return (you_died(NULL, NULL, NULL, "Error1\n"));
 	while (arguements[i])
 		ft_lstadd_back_number(&stack_a, ft_atoi(arguements[i++]));
 	if (is_sorted(stack_a))

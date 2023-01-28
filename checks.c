@@ -6,13 +6,13 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:43:33 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:56:25 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:13:58 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(push_list *stack)
+int	is_sorted(t_push_list *stack)
 {
 	long	i;
 
@@ -31,7 +31,7 @@ int	inside_array(int *array, int number, int size)
 {
 	int	i;
 
-	i = 0;	
+	i = 0;
 	while (i < size)
 	{
 		if (array[i] == number)
@@ -41,13 +41,13 @@ int	inside_array(int *array, int number, int size)
 	return (0);
 }
 
-int	repeatitions(push_list	*stack_a)
+int	repeatitions(t_push_list	*stack_a)
 {
 	int	*values;
 	int	i;
 	int	size;
 
-	size = 	stck_len(stack_a);
+	size = stck_len(stack_a);
 	values = malloc(sizeof(int) * size);
 	i = 0;
 	while (stack_a)
@@ -55,7 +55,7 @@ int	repeatitions(push_list	*stack_a)
 		if (inside_array(values, stack_a->number, size))
 		{
 			free(values);
-			return(1);
+			return (1);
 		}
 		values[i++] = stack_a->number;
 		stack_a = stack_a->next;

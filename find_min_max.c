@@ -6,12 +6,11 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:27:29 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:39:54 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:13:18 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	min(int a, int b)
 {
@@ -27,7 +26,7 @@ int	max(int a, int b)
 	return (b);
 }
 
-int	*find_min_med_max(push_list *temp)
+int	*find_min_med_max(t_push_list *temp)
 {
 	int		minim;
 	int		maxim;
@@ -54,15 +53,16 @@ int	*find_min_med_max(push_list *temp)
 
 void	sort_int_tab(int *tab, int size)
 {
-	int	i = 0;
+	int	i;
 	int	temp;
 
+	i = 0;
 	while (i < (size - 1))
 	{
 		if (tab[i] > tab[i + 1])
 		{
 			temp = tab[i];
-			tab[i] = tab[i+ 1];
+			tab[i] = tab[i + 1];
 			tab[i + 1] = temp;
 			i = 0;
 		}
@@ -71,7 +71,7 @@ void	sort_int_tab(int *tab, int size)
 	}
 }
 
-int	get_median(push_list *stack)
+int	get_median(t_push_list *stack)
 {
 	int	median;
 	int	size;

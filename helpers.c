@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:41:57 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:45:49 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:12:41 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	all_int(char **result)
 	return (1);
 }
 
-push_list	*get_last(push_list *stack)
+t_push_list	*get_last(t_push_list *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -61,9 +61,9 @@ push_list	*get_last(push_list *stack)
 	return (stack);
 }
 
-void	ft_push_clear(push_list **lst)
+void	ft_push_clear(t_push_list **lst)
 {
-	push_list	*tmp;
+	t_push_list	*tmp;
 
 	if (!lst)
 		return ;
@@ -76,7 +76,7 @@ void	ft_push_clear(push_list **lst)
 	*lst = NULL;
 }
 
-int	stck_size(push_list *stack)
+int	stck_size(t_push_list *stack)
 {
 	int	i;
 

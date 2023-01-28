@@ -6,17 +6,17 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:31:43 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:32:30 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:06:51 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(push_list **stack)
+void	swap(t_push_list **stack)
 {
-	push_list	*first;
-	push_list	*second;
-	push_list	*third;
+	t_push_list	*first;
+	t_push_list	*second;
+	t_push_list	*third;
 
 	if (stck_size(*stack) < 2)
 		return ;
@@ -28,21 +28,21 @@ void	swap(push_list **stack)
 	first->next = third;
 }
 
-void	sa(push_list **stack)
+void	sa(t_push_list **stack)
 {
 	swap(stack);
-	ft_putstr_fd("sa\n",1);
+	ft_putstr_fd("sa\n", 1);
 }
 
-void	sb(push_list **stack)
+void	sb(t_push_list **stack)
 {
 	swap(stack);
-	ft_putstr_fd("sb\n",1);
+	ft_putstr_fd("sb\n", 1);
 }
 
-void	ss(push_list **stack_a, push_list **stack_b)
+void	ss(t_push_list **stack_a, t_push_list **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
-	ft_putstr_fd("ss\n",1);
+	ft_putstr_fd("ss\n", 1);
 }

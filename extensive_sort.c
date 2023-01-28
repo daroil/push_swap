@@ -6,13 +6,14 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:54:54 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:56:08 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:13:32 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rot_b_rr_a(push_list *a, push_list *b, push_list **head_a, push_list **head_b)
+void	rot_b_rr_a(t_push_list *a, t_push_list *b,
+			t_push_list **head_a, t_push_list **head_b)
 {
 	int	iter;
 
@@ -31,7 +32,7 @@ void	rot_b_rr_a(push_list *a, push_list *b, push_list **head_a, push_list **head
 	pa(head_a, head_b);
 }
 
-void	rrb_ra(push_list *b, push_list **head_a, push_list **head_b)
+void	rrb_ra(t_push_list *b, t_push_list **head_a, t_push_list **head_b)
 {
 	int	iter;
 
@@ -50,7 +51,7 @@ void	rrb_ra(push_list *b, push_list **head_a, push_list **head_b)
 	pa(head_a, head_b);
 }
 
-int	find_index_of_min(push_list *stack)
+int	find_index_of_min(t_push_list *stack)
 {
 	int	index;
 	int	i;
@@ -72,7 +73,7 @@ int	find_index_of_min(push_list *stack)
 	return (index);
 }
 
-void	final_rotate(push_list **stack_a)
+void	final_rotate(t_push_list **stack_a)
 {
 	int		index;
 

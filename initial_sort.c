@@ -6,13 +6,13 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:47:32 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:50:18 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:12:38 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_most_to_b(push_list **stack_a, push_list **stack_b)
+void	push_most_to_b(t_push_list **stack_a, t_push_list **stack_b)
 {
 	int	*min_max_med;
 
@@ -29,9 +29,9 @@ void	push_most_to_b(push_list **stack_a, push_list **stack_b)
 	free(min_max_med);
 }
 
-void	initial_swap(push_list **head_a)
+void	initial_swap(t_push_list **head_a)
 {
-	push_list	*a;
+	t_push_list	*a;
 
 	if (stck_size(*head_a) != 3)
 		return ;
@@ -46,10 +46,10 @@ void	initial_swap(push_list **head_a)
 		sa(head_a);
 }
 
-int	stck_len(push_list *stack)
+int	stck_len(t_push_list *stack)
 {
-	push_list	*temp;
-	int		res;
+	t_push_list	*temp;
+	int			res;
 
 	res = 0;
 	temp = stack;
@@ -61,7 +61,8 @@ int	stck_len(push_list *stack)
 	return (res);
 }
 
-void	push_best_b_to_a(push_list **stack_a, push_list **stack_b, push_list *a, push_list *b)
+void	push_best_b_to_a(t_push_list **stack_a, t_push_list **stack_b,
+			t_push_list *a, t_push_list *b)
 {
 	int		min_steps;
 

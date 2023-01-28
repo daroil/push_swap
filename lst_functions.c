@@ -6,13 +6,13 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:30:15 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:30:30 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:12:07 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-push_list	*ft_lstlast_push(push_list *lst)
+t_push_list	*ft_lstlast_push(t_push_list *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -21,7 +21,7 @@ push_list	*ft_lstlast_push(push_list *lst)
 	return (lst);
 }
 
-push_list	*ft_lst_second_to_last_push(push_list *lst)
+t_push_list	*ft_lst_second_to_last_push(t_push_list *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -30,11 +30,11 @@ push_list	*ft_lst_second_to_last_push(push_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_number(push_list **lst, int number)
+void	ft_lstadd_number(t_push_list **lst, int number)
 {
-	push_list *new;
-	
-	new = malloc(sizeof(push_list));
+	t_push_list	*new;
+
+	new = malloc(sizeof(t_push_list));
 	if (!new)
 		return ;
 	new->next = *lst;
@@ -42,12 +42,12 @@ void	ft_lstadd_number(push_list **lst, int number)
 	*lst = new;
 }
 
-void	ft_lstadd_back_number(push_list **lst, int number)
+void	ft_lstadd_back_number(t_push_list **lst, int number)
 {
-	push_list	*tmp;
-	push_list 	*new;
+	t_push_list	*tmp;
+	t_push_list	*new;
 
-	new = malloc(sizeof(push_list));
+	new = malloc(sizeof(t_push_list));
 	if (!new)
 		return ;
 	if (!*lst)
@@ -61,7 +61,7 @@ void	ft_lstadd_back_number(push_list **lst, int number)
 	tmp->next = new;
 }
 
-void	ft_lstdelone_push(push_list *lst)
+void	ft_lstdelone_push(t_push_list *lst)
 {
 	if (!lst)
 		return ;

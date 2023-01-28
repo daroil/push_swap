@@ -6,15 +6,14 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:39:04 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 00:49:34 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:06:59 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 int	count_steps(int cur_pos_b, int cur_pos_a,
-	push_list *stack_b, push_list *stack_a)
+	t_push_list *stack_b, t_push_list *stack_a)
 {
 	return (min(min(max(cur_pos_b, cur_pos_a),
 				max(stck_len(stack_b), stck_len(stack_a))),
@@ -22,7 +21,7 @@ int	count_steps(int cur_pos_b, int cur_pos_a,
 				cur_pos_a + stck_len(stack_b))) + 1);
 }
 
-void	set_pos_count_steps(push_list *stack_b, push_list *stack_a,
+void	set_pos_count_steps(t_push_list *stack_b, t_push_list *stack_a,
 	int cur_pos_a, int cur_pos_b)
 {
 	stack_b->steps = count_steps(cur_pos_b, cur_pos_a, stack_b, stack_a);
@@ -30,12 +29,12 @@ void	set_pos_count_steps(push_list *stack_b, push_list *stack_a,
 	stack_b->pos_b = cur_pos_b;
 }
 
-void	steps(push_list *stack_a, push_list *head_b)
+void	steps(t_push_list *stack_a, t_push_list *head_b)
 {
-	int		cur_pos_a;
-	int		cur_pos_b;
-	push_list	*temp;
-	
+	int			cur_pos_a;
+	int			cur_pos_b;
+	t_push_list	*temp;
+
 	cur_pos_b = 0;
 	while (head_b)
 	{
@@ -57,7 +56,7 @@ void	steps(push_list *stack_a, push_list *head_b)
 	}
 }
 
-int	find_min_steps(push_list *stack)
+int	find_min_steps(t_push_list *stack)
 {
 	int	min_steps;
 
@@ -70,4 +69,3 @@ int	find_min_steps(push_list *stack)
 	}
 	return (min_steps);
 }
-
