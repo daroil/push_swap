@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 04:16:52 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 05:25:17 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 05:35:41 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,9 @@ void		gn_free_buf(char **buf);
 char		*extract_line(char *buf);
 char		*shorten_buf(char *buf);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			you_lived(t_push_list **stack_a, t_push_list **stack_b,
+				char **args, char *exit_message);
+int			you_died(t_push_list **stack_a, t_push_list **stack_b,
+				char **args, char *exit_message);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 04:16:55 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 05:24:00 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 05:38:45 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**get_args(int argc, char **argv)
 	return (result);
 }
 
-int	you_died(t_push_list **stack_a, t_push_list **stack_b,
+int	you_lived(t_push_list **stack_a, t_push_list **stack_b,
 		char **args, char *exit_message)
 {
 	ft_push_clear(stack_a);
@@ -80,13 +80,14 @@ int	execute_instruction(t_push_list **stack_a, t_push_list **stack_b,
 int	read_instructions(t_push_list **stack_a, t_push_list **stack_b)
 {
 	char		*line;
-	t_push_list	*temp;
+	int			error;
 
-	temp = *stack_a;
 	line = get_next_line(0);
 	while (line)
 	{
-		execute_instruction(stack_a, stack_b, line);
+		error = execute_instruction(stack_a, stack_b, line);
+		if (error)
+			return (1);
 		free(line);
 		line = get_next_line(0);
 	}
@@ -108,12 +109,12 @@ int	main(int argc, char **argv)
 	i = 0;
 	ft_lstadd_back_number(&stack_a, ft_atoi(arguements[i++]));
 	if (!stack_a)
-		return (you_died(NULL, NULL, NULL, "Error1\n"));
+		return (you_died(NULL, NULL, NULL, "Error\n"));
 	while (arguements[i])
 		ft_lstadd_back_number(&stack_a, ft_atoi(arguements[i++]));
 	if (read_instructions(&stack_a, &stack_b))
-		return (you_died(&stack_a, &stack_b, arguements, "KO\n"));
-	if (is_sorted(stack_a))
-		return (you_died(&stack_a, &stack_b, arguements, "OK\n"));
-	return (you_died(&stack_a, &stack_b, arguements, "KO\n"));
+		return (you_lived(&stack_a, &stack_b, arguements, "KO\n"));
+	if (is_sorted(stack_a) && i == stck_len(stack_a))
+		return (you_lived(&stack_a, &stack_b, arguements, "OK\n"));
+	return (you_lived(&stack_a, &stack_b, arguements, "KO\n"));
 }

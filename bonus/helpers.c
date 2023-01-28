@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:41:57 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 04:30:28 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/28 05:34:54 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ int	all_int(char **result)
 	return (1);
 }
 
-t_push_list	*get_last(t_push_list *stack)
+int	you_died(t_push_list **stack_a, t_push_list **stack_b,
+		char **args, char *exit_message)
 {
-	if (!stack)
-		return (NULL);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
+	ft_push_clear(stack_a);
+	ft_push_clear(stack_b);
+	ft_putstr_fd(exit_message, 2);
+	free_split(args);
+	return (1);
 }
 
 void	ft_push_clear(t_push_list **lst)
