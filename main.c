@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:49:12 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 01:11:39 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:47:21 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	**get_args(int argc, char **argv)
 		while (argv[++i])
 		{
 			result[i - 1] = ft_strdup(argv[i]);
+			if (!result[i - 1][0])
+				return (free_split(result), NULL);
 		}
 	}
 	if (!all_digits(result) || !all_int(result))
@@ -93,7 +95,7 @@ int	main(int argc, char **argv)
 	if (is_sorted(stack_a))
 		return (you_died(&stack_a, &stack_b, arguements, ""));
 	if (repeatitions(stack_a))
-		return (you_died(&stack_a, &stack_b, arguements, "Error\n"));
+		return (you_died(&stack_a, &stack_b, arguements, "Error23\n"));
 	push_most_to_b(&stack_a, &stack_b);
 	if (stack_a->steps == -1)
 		return (you_died(&stack_a, &stack_b, arguements, "Error3\n"));

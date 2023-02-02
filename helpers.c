@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:41:57 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 01:12:41 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:56:06 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	check_int(char *str)
 	{
 		res = res * 10 + *str - '0';
 		str++;
-		if (res > MAX_INT || res < MIN_INT)
-			return (0);
 	}
 	res *= sign;
 	if (res > MAX_INT || res < MIN_INT)
