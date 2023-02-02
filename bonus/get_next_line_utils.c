@@ -5,77 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 19:18:00 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 04:51:21 by dhendzel         ###   ########.fr       */
+/*   Created: 2023/01/25 18:31:24 by dhendzel          #+#    #+#             */
+/*   Updated: 2023/02/02 16:12:29 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-size_t	gn_strlen(const char *s)
+char	*ft_strchr(char *s, int c)
 {
-	size_t	i;
+	char	c2;
 
 	if (!s)
-		return (0);
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*gn_set_buf(char *buf)
-{
-	buf = malloc (1);
-	if (!buf)
 		return (NULL);
-	buf[0] = '\0';
-	return (buf);
-}
-
-void	gn_free_buf(char **buf)
-{
-	free(*buf);
-	*buf = NULL;
-}
-
-char	*buf_join(char *buf, char *tmp)
-{
-	size_t	i;
-	size_t	j;
-	char	*s_joined;
-
-	if (!buf)
-		buf = gn_set_buf(buf);
-	s_joined = malloc(gn_strlen(buf) + gn_strlen(tmp) + 1);
-	if (!s_joined)
-		return (NULL);
-	i = 0;
-	while (buf[i] != '\0')
+	c2 = (char)c;
+	while (*s != c2)
 	{
-		s_joined[i] = buf[i];
-		i++;
+		if (*s == '\0')
+			return (NULL);
+		s++;
 	}
+	return (s);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		if (s1 == NULL)
+			return (NULL);
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	while (s1[++i] != '\0')
+		str[i] = s1[i];
 	j = 0;
-	while (tmp[j] != '\0')
-		s_joined[i++] = tmp[j++];
-	s_joined[i] = '\0';
-	gn_free_buf(&buf);
-	return (s_joined);
-}
-
-int	found_nl(char *buf)
-{
-	int	i;
-
-	i = 0;
-	if (!buf)
-		return (0);
-	while (buf[i] != '\0')
-	{
-		if (buf[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
+	while (s2[j] != '\0')
+		str[i++] = s2[j++];
+	free(s1);
+	str[i] = '\0';
+	return (str);
 }

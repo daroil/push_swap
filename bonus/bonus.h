@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 04:16:52 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 05:35:41 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:12:48 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,11 @@ void		ft_lstdelone_push(t_push_list *lst);
 int			ft_atoi(const char *str);
 int			stck_len(t_push_list *stack);
 char		*get_next_line(int fd);
-char		*read_to_buf(int fd, char *buf);
-int			found_nl(char *buf);
-char		*buf_join(char *buf, char *tmp);
-size_t		gn_strlen(const char *s);
-char		*gn_set_buf(char *buf);
-void		gn_free_buf(char **buf);
+char		*ft_dup(char *str);
+char		*ft_read(int fd, char *progress);
+char		*ft_next_line(char *progress);
+char		*ft_strchr(char *s, int c);
+char		*ft_strjoin(char *s1, char *s2);
 char		*extract_line(char *buf);
 char		*shorten_buf(char *buf);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);

@@ -5,110 +5,102 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 18:11:15 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 04:51:18 by dhendzel         ###   ########.fr       */
+/*   Created: 2023/01/25 18:31:29 by dhendzel          #+#    #+#             */
+/*   Updated: 2023/01/25 18:31:30 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-char	*get_next_line(int fd)
+char	*ft_dup(char *str)
 {
-	static char	*buf;
-	char		*line;
+	char	*res;
+	int		i;
 
-	if (read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0 || fd < 0)
+	i = 0;
+	if (!str[i])
 		return (NULL);
-	buf = read_to_buf(fd, buf);
-	if (!buf)
+	while (str[i] && str[i] != '\n')
+		i++;
+	res = (char *)malloc(sizeof(char) * (i + 2));
+	if (res == NULL)
 		return (NULL);
-	if (buf[0] == '\0')
+	i = 0;
+	while (str[i] && str[i] != '\n')
 	{
-		gn_free_buf(&buf);
-		return (NULL);
+		res[i] = str[i];
+		i++;
 	}
-	line = extract_line(buf);
-	buf = shorten_buf(buf);
-	return (line);
+	if (str[i] == '\n')
+	{
+		res[i] = str[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
 
-char	*shorten_buf(char *buf)
+char	*ft_read(int fd, char *progress)
 {
-	char	*tmp;
+	char	*buf;
+	int		res_read;
+
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
+	res_read = 1;
+	while (!ft_strchr(progress, '\n') && res_read != 0)
+	{
+		res_read = read(fd, buf, BUFFER_SIZE);
+		if (res_read == -1)
+		{
+			free(buf);
+			return (NULL);
+		}
+		buf[res_read] = '\0';
+		progress = ft_strjoin(progress, buf);
+	}
+	free(buf);
+	return (progress);
+}
+
+char	*ft_next_line(char *progress)
+{
 	int		i;
 	int		j;
+	char	*s;
 
 	i = 0;
-	while (buf[i] != '\0' && buf[i] != '\n')
+	j = 0;
+	while (progress[i] && progress[i] != '\n')
 		i++;
-	if (buf[i] == '\0')
+	if (!progress[i])
 	{
-		gn_free_buf(&buf);
+		free(progress);
 		return (NULL);
 	}
-	tmp = malloc(gn_strlen(buf) - i + 1);
-	if (!tmp)
+	s = (char *)malloc(sizeof(char) * (ft_strlen(progress) - i + 1));
+	if (!s)
 		return (NULL);
 	i++;
-	j = 0;
-	while (buf[i] != '\0')
-		tmp[j++] = buf[i++];
-	tmp[j] = '\0';
-	gn_free_buf(&buf);
-	return (tmp);
+	while (progress[i])
+		s[j++] = progress[i++];
+	free(progress);
+	s[j] = '\0';
+	return (s);
 }
 
-char	*extract_line(char *buf)
+char	*get_next_line(int fd)
 {
-	char	*tmp;
-	int		i;
+	char		*line;
+	static char	*progress;
 
-	i = 0;
-	tmp = NULL;
-	if (!buf)
+	if (fd < 0 || BUFFER_SIZE < 1 || (read(fd, NULL, 0) < 0))
 		return (NULL);
-	while (buf[i] != '\0' && buf[i] != '\n')
-		i++;
-	if (buf[i] == '\0')
-		tmp = malloc(i + 1);
-	else if (buf[i] == '\n')
-		tmp = malloc(i + 2);
-	if (!tmp)
+	progress = ft_read(fd, progress);
+	if (progress == NULL)
 		return (NULL);
-	i = 0;
-	while (buf[i] != '\0' && buf[i] != '\n')
-	{
-		tmp[i] = buf[i];
-		i++;
-	}
-	if (buf[i] == '\n')
-		tmp[i++] = '\n';
-	tmp[i] = '\0';
-	return (tmp);
-}
-
-char	*read_to_buf(int fd, char *buf)
-{
-	char	*tmp;
-	int		start_again;
-	int		bytes;
-
-	bytes = 0;
-	start_again = 1;
-	tmp = malloc (BUFFER_SIZE + 1);
-	if (!tmp)
-		return (NULL);
-	while (start_again == 1)
-	{
-		if (found_nl(buf))
-			break ;
-		bytes = read(fd, &tmp[0], BUFFER_SIZE);
-		tmp[bytes] = '\0';
-		buf = buf_join(buf, tmp);
-		if (bytes < BUFFER_SIZE)
-			start_again = 0;
-	}
-	free(tmp);
-	tmp = NULL;
-	return (buf);
+	line = ft_dup(progress);
+	progress = ft_next_line(progress);
+	return (line);
 }

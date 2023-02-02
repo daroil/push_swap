@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 04:16:55 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 05:38:45 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:09:37 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,27 @@ int	you_lived(t_push_list **stack_a, t_push_list **stack_b,
 int	execute_instruction(t_push_list **stack_a, t_push_list **stack_b,
 		char *inst)
 {
-	if (!ft_strncmp("sa\n", inst, 3))
+	if (!ft_strncmp("sa\0", inst, 3))
 		return (swap(stack_a), 0);
-	else if (!ft_strncmp("sb\n", inst, 3))
+	else if (!ft_strncmp("sb\0", inst, 3))
 		return (swap(stack_b), 0);
-	else if (!ft_strncmp("ss\n", inst, 3))
+	else if (!ft_strncmp("ss\0", inst, 3))
 		return (ss(stack_a, stack_b), 0);
-	else if (!ft_strncmp("pa\n", inst, 3))
+	else if (!ft_strncmp("pa\0", inst, 3))
 		return (pa(stack_a, stack_b), 0);
-	else if (!ft_strncmp("pb\n", inst, 3))
+	else if (!ft_strncmp("pb\0", inst, 3))
 		return (pb(stack_a, stack_b), 0);
-	else if (!ft_strncmp("ra\n", inst, 3))
+	else if (!ft_strncmp("ra\0", inst, 3))
 		return (ra(stack_a), 0);
-	else if (!ft_strncmp("rb\n", inst, 3))
+	else if (!ft_strncmp("rb\0", inst, 3))
 		return (rb(stack_b), 0);
-	else if (!ft_strncmp("rr\n", inst, 3))
+	else if (!ft_strncmp("rr\0", inst, 3))
 		return (rr(stack_a, stack_b), 0);
-	else if (!ft_strncmp("rra\n", inst, 3))
+	else if (!ft_strncmp("rra\0", inst, 3))
 		return (rra(stack_a), 0);
-	else if (!ft_strncmp("rrb\n", inst, 3))
+	else if (!ft_strncmp("rrb\0", inst, 3))
 		return (rrb(stack_b), 0);
-	else if (!ft_strncmp("rrr\n", inst, 3))
+	else if (!ft_strncmp("rrr\0", inst, 3))
 		return (rrr(stack_a, stack_b), 0);
 	return (1);
 }
@@ -85,10 +85,11 @@ int	read_instructions(t_push_list **stack_a, t_push_list **stack_b)
 	line = get_next_line(0);
 	while (line)
 	{
+		line[ft_strlen(line) - 1] = '\0';
 		error = execute_instruction(stack_a, stack_b, line);
+		free(line);
 		if (error)
 			return (1);
-		free(line);
 		line = get_next_line(0);
 	}
 	return (0);
