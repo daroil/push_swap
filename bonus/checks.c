@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:43:33 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/30 13:04:47 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:37:31 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	all_digits(char **argv)
 				return (0);
 			j++;
 		}
+		if (minus && j == 1)
+			return (0);
 		i++;
 	}
 	return (1);

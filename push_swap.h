@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:20 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/01/28 04:58:19 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:37:44 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,11 @@ void		free_split(char **splitted);
 int			ft_atoi(const char *str);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putchar_fd(char c, int fd);
-
+int			ft_max(t_push_list *s);
+int			ft_min(t_push_list *s);
+void		ft_sort_3_element(t_push_list **stack_a);
+void		ft_sort_5_element(t_push_list **stack_a, t_push_list **stack_b);
+int			choose_and_sort(int i, t_push_list **stack_a,
+				t_push_list **stack_b);
+void		sort(t_push_list **head_a, t_push_list **head_b);
 #endif

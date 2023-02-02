@@ -6,7 +6,7 @@
 #    By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 13:47:58 by dhendzel          #+#    #+#              #
-#    Updated: 2023/01/28 04:51:04 by dhendzel         ###   ########.fr        #
+#    Updated: 2023/02/02 14:35:57 by dhendzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ MAND_SRCS = main \
 			initial_sort \
 			extensive_sort \
 			rotate_push \
-			rev_rotate_push
+			rev_rotate_push \
+			choose_and_sort
 
 BONUS_SRCS = main \
 			ft_split \
