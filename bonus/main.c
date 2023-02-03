@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 04:16:55 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/02/02 16:09:37 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:42:35 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int	main(int argc, char **argv)
 		return (you_died(NULL, NULL, NULL, "Error\n"));
 	while (arguements[i])
 		ft_lstadd_back_number(&stack_a, ft_atoi(arguements[i++]));
+	if (repeatitions(stack_a))
+		return (you_died(&stack_a, &stack_b, arguements, "Error\n"));
 	if (read_instructions(&stack_a, &stack_b))
 		return (you_lived(&stack_a, &stack_b, arguements, "KO\n"));
 	if (is_sorted(stack_a) && i == stck_len(stack_a))

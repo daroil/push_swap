@@ -6,7 +6,7 @@
 /*   By: dhendzel <dhendzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 00:43:33 by dhendzel          #+#    #+#             */
-/*   Updated: 2023/02/02 14:37:31 by dhendzel         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:42:13 by dhendzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	inside_array(int *array, int number, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (array[i] == number)
+		if (array[i] == number && number != 0)
 			return (1);
 		i++;
 	}
@@ -56,7 +56,7 @@ int	repeatitions(t_push_list	*stack_a)
 	{
 		if (stack_a->number == 0)
 			null_count++;
-		if (inside_array(values, stack_a->number, size))
+		if (inside_array(values, stack_a->number, size) || null_count > 1)
 		{
 			free(values);
 			return (1);
